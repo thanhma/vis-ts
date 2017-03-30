@@ -30,7 +30,8 @@
     "gh": "npm run build && gh-pages -d dist",
     "lint": "eslint --ext .js .vue client/*",
     "lint:fix": "eslint --fix --ext .js .vue electron.js client/* build/* config/*",
-    "test": "echo lol"
+    "test": "echo lol",
+	"start": "echo start"
   },
   "dependencies": {
     "animate.css": "3.5.2",
