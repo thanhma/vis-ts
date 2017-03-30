@@ -31,7 +31,7 @@
     "lint": "eslint --ext .js .vue client/*",
     "lint:fix": "eslint --fix --ext .js .vue electron.js client/* build/* config/*",
     "test": "echo lol",
-	"start": "echo start"
+	"start": "cross-env NODE_ENV=production node build/build.js"
   },
   "dependencies": {
     "animate.css": "3.5.2",
