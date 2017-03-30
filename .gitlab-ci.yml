@@ -1,0 +1,53 @@
+# This file is a template, and might need editing before it works on your project.
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: node:6.10
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+#cache:
+#  paths:
+#  - node_modules/
+#
+#test_async:
+#  script:
+#   - npm install
+#   - npm run build
+#   
+#staging:
+#  type: deploy
+#  script:
+#  - gem install dpl
+#  - dpl --provider=heroku --app=timeshiiit --api-key=$HEROKU_STAGING_API_KEY
+#  only:
+#  - master
+cache:
+  paths:
+  - node_modules/
+  
+before_script:
+    - apt-get -qq update
+    - apt-get -qq install -y python2.7 python2.7-dev build-essential make gcc g++ libicu-dev
+    # - npm -g install npm --silent
+    # - "echo -e \"export default {CLIENT_ID: '$CLIENT_ID'}\" > app/scripts/settings.js"
+    # - npm set progress=false
+    #- npm install --silent
+    
+build_and_deploy_prod:
+    stage: deploy
+    script:
+      - echo npm -v
+      - npm install --silent
+      - npm run build
+      - ls dist/
+      #- mkdir  dist/build
+      #- tar czfC dist/build/latest.tar.gz dist/heroku_build/ .
+      #- tar czfC dist/build/heroku_build.tar.gz dist/heroku_build/ .
+      - apt-get install -yqq ruby ruby-dev
+      - gem install dpl
+      - dpl --provider=heroku --app=timeshiiit --api-key=$HEROKU_STAGING_API_KEY
+    artifacts:
+      paths:
+        - dist
+    only:
+      - master
