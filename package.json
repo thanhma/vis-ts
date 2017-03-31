@@ -19,8 +19,8 @@
     "vue"
   ],
   "engines": {
-    "node": "5.5.0",
-    "npm": "3.3.12"
+    "node": ">=4",
+    "npm": ">=3"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production node build/build.js",
