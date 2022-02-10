@@ -110,7 +110,7 @@
     "jquery": "^3.1.1",
     "jsonp": "^0.2.1",
     "moment": "^2.0.0",
-    "node-sass": "^4.1.1",
+    "node-sass": "^7.0.0",
     "opn": "^4.0.2",
     "ora": "^0.4.0",
     "postcss-loader": "^1.2.1",
